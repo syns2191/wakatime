@@ -170,7 +170,7 @@ def get_time_today(args, use_ntlm_proxy=False):
     fetch summary.
     """
 
-    url = 'https://api.wakatime.com/api/v1/users/current/summaries'
+    url = 'http://localhost:3000/api/v1/users/current/summaries'
     timeout = args.timeout
     if not timeout:
         timeout = 60
