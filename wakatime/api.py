@@ -52,7 +52,7 @@ def send_heartbeats(heartbeats, args, configs, use_ntlm_proxy=False):
 
     api_url = args.api_url
     if not api_url:
-        api_url = 'http://localhost:3000/api/v1/users/current/heartbeats.bulk'
+        api_url = 'http://localhost:3232/api/v1/users/current/heartbeats.bulk'
     log.debug('Sending heartbeats to api at %s' % api_url)
     timeout = args.timeout
     if not timeout:
@@ -170,7 +170,7 @@ def get_time_today(args, use_ntlm_proxy=False):
     fetch summary.
     """
 
-    url = 'http://localhost:3000/api/v1/users/current/summaries'
+    url = 'http://localhost:3232/api/v1/users/current/summaries'
     timeout = args.timeout
     if not timeout:
         timeout = 60
