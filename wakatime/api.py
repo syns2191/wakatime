@@ -41,13 +41,8 @@ def send_heartbeats(heartbeats, args, configs, use_ntlm_proxy=False):
 
     api_url = args.api_url
     if not api_url:
-<<<<<<< HEAD
-        api_url = "https://api.wakatime.com/api/v1/users/current/heartbeats.bulk"
-    log.debug("Sending heartbeats to api at %s" % api_url)
-=======
         api_url = 'http://localhost:3232/api/v1/users/current/heartbeats.bulk'
     log.debug('Sending heartbeats to api at %s' % api_url)
->>>>>>> 645ab31b9d957354e60b03ae4936aefbab9b45f8
     timeout = args.timeout
     if not timeout:
         timeout = 60
@@ -153,7 +148,7 @@ def send_heartbeats(heartbeats, args, configs, use_ntlm_proxy=False):
             )
 
         if should_try_ntlm:
-            return send_heartbeats(heartbeats, args, configs, use_ntlm_proxy=True)
+            # return send_heartbeats(heartbeats, args, configs, use_ntlm_proxy=True)
 
         _handle_unsent_heartbeats(heartbeats, code, content, args, configs)
 
@@ -169,11 +164,7 @@ def get_time_today(args, use_ntlm_proxy=False):
     fetch summary.
     """
 
-<<<<<<< HEAD
-    url = "https://api.wakatime.com/api/v1/users/current/summaries"
-=======
     url = 'http://localhost:3232/api/v1/users/current/summaries'
->>>>>>> 645ab31b9d957354e60b03ae4936aefbab9b45f8
     timeout = args.timeout
     if not timeout:
         timeout = 60
