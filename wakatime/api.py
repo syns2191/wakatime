@@ -154,7 +154,7 @@ def send_heartbeats(heartbeats, args, configs, use_ntlm_proxy=False):
             })
 
         if should_try_ntlm:
-            return send_heartbeats(heartbeats, args, configs, use_ntlm_proxy=True)
+            # return send_heartbeats(heartbeats, args, configs, use_ntlm_proxy=True)
 
         _handle_unsent_heartbeats(heartbeats, code, content, args, configs)
 
