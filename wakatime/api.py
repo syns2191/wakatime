@@ -110,7 +110,7 @@ def send_heartbeats(heartbeats, args, configs, use_ntlm_proxy=False):
                                 verify=_get_verify(args))
     except RequestException:
         if should_try_ntlm:
-            return send_heartbeats(heartbeats, args, configs, use_ntlm_proxy=True)
+            return SUCCESS
         else:
             exception_data = {
                 sys.exc_info()[0].__name__: u(sys.exc_info()[1]),
