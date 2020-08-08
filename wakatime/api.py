@@ -127,7 +127,7 @@ def send_heartbeats(heartbeats, args, configs, use_ntlm_proxy=False):
 
     except:  # delete cached session when requests raises unknown exception
         if should_try_ntlm:
-            return send_heartbeats(heartbeats, args, configs, use_ntlm_proxy=True)
+            return SUCCESS
         else:
             exception_data = {
                 sys.exc_info()[0].__name__: u(sys.exc_info()[1]),
