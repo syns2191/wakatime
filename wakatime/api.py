@@ -110,7 +110,7 @@ def send_heartbeats(heartbeats, args, configs, use_ntlm_proxy=False):
                                 verify=_get_verify(args))
     except RequestException:
         if should_try_ntlm:
-            return SUCCESS
+            return send_heartbeats(heartbeats, args, configs, use_ntlm_proxy=True)
         else:
             exception_data = {
                 sys.exc_info()[0].__name__: u(sys.exc_info()[1]),
@@ -127,7 +127,7 @@ def send_heartbeats(heartbeats, args, configs, use_ntlm_proxy=False):
 
     except:  # delete cached session when requests raises unknown exception
         if should_try_ntlm:
-            return SUCCESS
+            return send_heartbeats(heartbeats, args, configs, use_ntlm_proxy=True)
         else:
             exception_data = {
                 sys.exc_info()[0].__name__: u(sys.exc_info()[1]),
@@ -153,8 +153,8 @@ def send_heartbeats(heartbeats, args, configs, use_ntlm_proxy=False):
                 'response_text': content,
             })
 
-        # if should_try_ntlm:
-            # return send_heartbeats(heartbeats, args, configs, use_ntlm_proxy=True)
+        if should_try_ntlm:
+            return send_heartbeats(heartbeats, args, configs, use_ntlm_proxy=True)
 
         _handle_unsent_heartbeats(heartbeats, code, content, args, configs)
 
@@ -329,8 +329,8 @@ def _handle_unsent_heartbeats(heartbeats, code, content, args, configs):
                     'response_code': code,
                     'response_content': content,
                 })
-            queue = Queue(args, configs)
-            queue.push_many(heartbeats)
+            # queue = Queue(args, configs)
+            # queue.push_many(heartbeats)
     else:
         log.error({
             'response_code': code,
