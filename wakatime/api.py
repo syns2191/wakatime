@@ -329,8 +329,8 @@ def _handle_unsent_heartbeats(heartbeats, code, content, args, configs):
                     'response_code': code,
                     'response_content': content,
                 })
-            # queue = Queue(args, configs)
-            # queue.push_many(heartbeats)
+            queue = Queue(args, configs)
+            queue.push_many(heartbeats)
     else:
         log.error({
             'response_code': code,
